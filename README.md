@@ -94,7 +94,18 @@ kinoko@LPC-0081:~/GIT/eaglys/fake-eaglys-tfhe$ git branch -a
   oss-pr-1                    <-   OSS pull request!!!
 ```
 
-##  Treat OSS PR branch as a private PR 
+##  Update PR branch to private repo
+* cannot repeat the fetch command above: `git fetch oss pull...` -> will error out
+* force-update is possible with `+pull`
+```
+git fetch oss +pull/1/head:oss-pr-1
+```
+* check PR commit hash - using the local branch name
+```
+git rev-parse oss-pr-1
+```
+
+##  Create PR in private repo from OSS PR branch 
 
 * modify, adapt source code
 * create PR local to private repo
@@ -110,16 +121,4 @@ kinoko@LPC-0081:~/GIT/eaglys/fake-eaglys-tfhe$ git branch -a
 Thank you Dude for your contribution! 
 Your PR was merged internally as <commit-sha> — and will appear in this repo automatically!
 ```
-
-
-
-
-
-
-
-
-
-
-
-
 
