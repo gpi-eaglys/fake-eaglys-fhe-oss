@@ -21,6 +21,8 @@ fake-eaglys-tfhe
 ```
 
 
+
+# Private -> OSS 
 ## Setup: actions 
 * sync to OSS is triggered automatically by CI/CD
    * trigger: a PR merged to `main` branch 
@@ -48,5 +50,32 @@ ssh-keygen -t ed25519 -C "sync-bot" -f sync_deploy_key -N ""
 * open GitHub repo: `fake-eaglys-tfhe-oss` 
 * **Settings -> Deploy keys -> Add deploy key**
 * paste contents of `sync_deploy_key.pub`
+
+
+# OSS -> Private
+
+## Add OSS as a remote to private repo
+* in a localy work dir of private repo `fake-eaglys-tfhe.git`
+* add OSS repo as remote branch `oss` 
+```
+git remote add oss git@github.com:YOUR_USERNAME/fake-eaglys-tfhe-oss.git
+git fetch oss
+``` 
+
+
+##  Pull PR branch to private
+* in a localy work dir of private repo `fake-eaglys-tfhe.git`
+* if a PR is opened in the OSS repo -> pull it into the private 
+
+```
+git fetch oss pull/<PR_NUMBER>/head:pr-<PR_NUMBER>
+```
+* for example for PR number **1** it would be:
+```
+git fetch oss pull/<PR_NUMBER>/head:pr-<PR_NUMBER>
+# for example: 
+git fetch oss pull/1/head:pr-1
+```
+
 
 
