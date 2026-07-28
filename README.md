@@ -52,7 +52,7 @@ fake-eaglys-fhe
 
 ## Process Overview 
 
-![gitflow-overview](docs/pix/git-flow-overview.png)
+![gitflow-overview](docs/pix/git-oss-with-fork.png)
 
 
 # Setup
