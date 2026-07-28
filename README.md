@@ -55,7 +55,7 @@ fake-eaglys-fhe
 ![gitflow-overview](docs/pix/git-flow-overview.png)
 
 
-# Private-to-OSS Sync
+# Setup
 
 ## Setup: GitHub Actions 
 * sync to OSS is triggered automatically by CI/CD
@@ -86,10 +86,36 @@ ssh-keygen -t ed25519 -C "sync-bot" -f sync_deploy_key -N ""
 * paste contents of `sync_deploy_key.pub`
 
 
+# Private-to-OSS Sync
+* handled by GitHub actions
+* triggered by merge to `main` branch
+
 
 # OSS-to-Private Sync
+* contribution to OSS repository merged into the private repo
+* TL;DR
 
-## Add OSS as a remote origin to the private repo
+```bash
+# fetch PR from OSS repo
+git fetch oss
+git fetch oss pull/<PR_NUM>/head:oss-pr-<PR_NUM>
+
+# create integration branch: merge PR into main
+git checkout main
+git pull origin main
+git checkout -b extern/oss-pr-<PR_NUM>     
+git cherry-pick oss-pr-<PR_NUM>
+
+# push 
+git push -u origin extern/oss-pr-<PR_NUM>
+
+# create PR (manually)
+``` 
+
+
+
+
+## Setup: Add OSS as a remote origin to the private repo
 * in a localy workdir of private repo `fake-eaglys-fhe.git`
 * add OSS repo as remote branch `oss` 
 ```
