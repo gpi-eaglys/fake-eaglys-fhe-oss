@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Fake Eagly-TFHE 
 
 * this is a fake repo to test (a) private -> OSS and (b) OSS -> private workflows
@@ -199,8 +198,3 @@ Thank you Dude for your contribution!
 Your PR was merged internally as <commit-sha> — and will appear in this repo automatically!
 ```
 
-
-2 directories, 1 file
-=======
-# fake-eaglys-tfhe
->>>>>>> 145b277 (Initial commit)
