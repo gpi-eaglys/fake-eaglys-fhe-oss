@@ -175,10 +175,13 @@ git push -u origin extern/oss-pr-1
 
 
 ##  Create PR in private repo from OSS PR branch 
-* create PR local to private repo
-* label this PR `oss-import` — this is how the sync workflow recognizes ALL of
-  its commits as external (preserving their original authors) instead of
-  squashing them in as anonymous internal changes
+* create PR local to private repo, keeping the `extern/oss-pr-<N>` branch
+  name — the sync workflow auto-detects external PRs by that naming
+  convention and tags the merge commit accordingly (preserving their
+  original authors instead of squashing them in as anonymous internal
+  changes). Renamed the branch, or importing without that convention for
+  some reason? Label the PR `oss-import` instead — it works as an explicit
+  override.
 * continue modifying this branch
 * merge using **"Create a merge commit"** — not squash, not rebase. The sync
   workflow tags the merge commit itself, so it needs the two parents a real
