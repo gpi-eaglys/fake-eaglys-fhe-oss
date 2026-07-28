@@ -1,6 +1,9 @@
 # Fake Eagly-TFHE 
 
-* this is a fake repo to test (a) private -> OSS and (b) OSS -> private workflows
+* these are fake repos to test workflows  \
+  (a) private -> OSS \
+  (b) OSS -> private 
+* repos
   *  [fake-eaglys-fhe.git](https://github.com/gpi-eaglys/fake-eaglys-fhe.git)  private repo
   *  [fake-eaglys-fhe-oss.git](https://github.com/gpi-eaglys/fake-eaglys-fhe-oss.git)  OSS repo
 
@@ -175,20 +178,16 @@ git push -u origin extern/oss-pr-1
 
 
 ##  Create PR in private repo from OSS PR branch 
-* create PR local to private repo, keeping the `extern/oss-pr-<N>` branch
-  name — the sync workflow auto-detects external PRs by that naming
-  convention and tags the merge commit accordingly (preserving their
-  original authors instead of squashing them in as anonymous internal
-  changes). Renamed the branch, or importing without that convention for
-  some reason? Label the PR `oss-import` instead — it works as an explicit
-  override.
-* continue modifying this branch
-* merge using **"Create a merge commit"** — not squash, not rebase. The sync
-  workflow tags the merge commit itself, so it needs the two parents a real
+* create PR local to private repo, from `extern/oss-pr-<N>` branch
+* the sync workflow auto-detects external PRs this naming
+* can have multiple commits against this PR
+
+## Merge PR in private repo
+* merge using **"Create a merge commit"** — not squash, not rebase. 
+* The sync workflow tags the merge commit itself, so it needs the two parents a real
   merge commit has to recover the PR's original commits. (Squash/rebase
   merging should be disabled repo-wide: Settings -> General -> Pull Requests.)
 * merging -> will trigger sync with OSS repo
-
 
 ##  Close OSS PR -> add courtesy note
 * on the OSS PR page -> close the PR
